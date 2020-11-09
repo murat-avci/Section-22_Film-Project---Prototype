@@ -35,8 +35,6 @@ UI.prototype.addFilmToUI = function(newFilm) {
   </tr>
   
   `;
-
-
 }
 
 UI.prototype.clearInputs = function(element1, element2, element3) {
@@ -70,4 +68,8 @@ UI.prototype.loadAllFilms = function(films) {
   </tr>`;
   })
 
+}
+
+UI.prototype.deleteFilmFromUI = function(element) {
+  element.parentElement.parentElement.remove();
 }
