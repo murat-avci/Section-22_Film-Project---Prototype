@@ -1,6 +1,6 @@
 const form = document.querySelector("#film-form");
 const titleElement = form.querySelector("#title");
-const directorElement = form.querySelector("#director");
+const producerElement = form.querySelector("#producer");
 const urlElement = form.querySelector("#url");
 
 // UI Objesini Başlatma
@@ -17,26 +17,30 @@ eventListeners();
 
 function eventListeners() {
     form.addEventListener("submit", addFilm);
+    document.addEventListener("DOMContentLoaded", function() {
+        let films = storage.getFilmsFromStorage();
+        ui.loadAllFilms(films);
+    })
 }
 
 function addFilm(e) {
     const title = titleElement.value;
-    const director = directorElement.value;
+    const producer = producerElement.value;
     const url = urlElement.value;
 
-    if (title === "" || director === "" || url === "") {
+    if (title === "" || producer === "" || url === "") {
         // Hata mesajı
         ui.displayMessages("Tüm alanları doldurunuz", "danger");
 
     } else {
         // Yeni film
-        const newFilm = new Film(title, director, url);
+        const newFilm = new Film(title, producer, url);
         ui.addFilmToUI(newFilm); // Arayüze film ekleme
         storage.addFilmToStorage(newFilm); // Storage a film ekleme
         ui.displayMessages("Film başarı ile eklenmiştir.", "success");
     }
 
-    ui.clearInputs(titleElement, urlElement, directorElement);
+    ui.clearInputs(titleElement, urlElement, producerElement);
 
     e.preventDefault();
 }

@@ -24,7 +24,7 @@ UI.prototype.addFilmToUI = function(newFilm) {
   <tr>
     <td><img src="${newFilm.url}" class="img-fluid img-thumbnail"></td>
     <td>${newFilm.title}</td>
-    <td>${newFilm.director}</td>
+    <td>${newFilm.producer}</td>
     <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
   </tr>
   <tr>
@@ -57,4 +57,17 @@ UI.prototype.displayMessages = function(message, type) {
   setTimeout(function () {
     div.remove();
   }, 1000);
+}
+UI.prototype.loadAllFilms = function(films) {
+  const filmList = document.querySelector("#films");
+
+  films.forEach(function(film) {
+    filmList.innerHTML += `<tr>
+    <td><img src="${Film.url}" class="img-fluid img-thumbnail"></td>
+    <td>${Film.title}</td>
+    <td>${Film.producer}</td>
+    <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
+  </tr>`;
+  })
+
 }

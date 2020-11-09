@@ -1,7 +1,7 @@
 // Film Constructor
-function Film(title, director, url) {
+function Film(title, producer, url) {
     this.title = title;
-    this.director = director;
+    this.producer = producer;
     this.url = url;
 }
 
