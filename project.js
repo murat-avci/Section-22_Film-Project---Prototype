@@ -3,6 +3,7 @@ const titleElement = form.querySelector("#title");
 const producerElement = form.querySelector("#producer");
 const urlElement = form.querySelector("#url");
 const cardBody = document.querySelectorAll(".card-body")[1];
+const clear = document.querySelector("#clear-films");
 
 // UI Objesini Başlatma
 
@@ -23,6 +24,7 @@ function eventListeners() {
         ui.loadAllFilms(films);
     });
     cardBody.addEventListener("click", deleteFilm);
+    clear.addEventListener("click", clearAllFilms);
 }
 
 function addFilm(e) {
@@ -52,6 +54,12 @@ function deleteFilm(e) {
         ui.deleteFilmFromUI(e.target);
         storage.deleteFilmFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
         ui.displayMessages("Silme işlemi başarılı...", "success");
+    }
+}
+function clearAllFilms() {
+    if(confirm("Emin misiniz?")) {
+        ui.clearAllFilmsFromUI();
+        storage.clearAllFilmsFromStorage();
     }
 }
 

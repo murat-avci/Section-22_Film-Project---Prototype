@@ -27,13 +27,6 @@ UI.prototype.addFilmToUI = function(newFilm) {
     <td>${newFilm.producer}</td>
     <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
   </tr>
-  <tr>
-    <td><img src="" class="img-fluid img-thumbnail"></td>
-    <td></td>
-    <td></td>
-    <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
-  </tr>
-  
   `;
 }
 
@@ -71,4 +64,14 @@ UI.prototype.loadAllFilms = function(films) {
 
 UI.prototype.deleteFilmFromUI = function(element) {
   element.parentElement.parentElement.remove();
+}
+
+UI.prototype.clearAllFilmsFromUI = function() {
+  const filmList = document.querySelector("#films");
+
+  // filmList.innerHTML = ""; 1. ancak yavaş çalışan yöntem
+
+  while(filmList.firstElementChild !== null) {
+    filmList.firstElementChild.remove();
+  }
 }
