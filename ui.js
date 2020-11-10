@@ -61,13 +61,12 @@ UI.prototype.loadAllFilms = function(films) {
 
   films.forEach(function(film) {
     filmList.innerHTML += `<tr>
-    <td><img src="${Film.url}" class="img-fluid img-thumbnail"></td>
-    <td>${Film.title}</td>
-    <td>${Film.producer}</td>
+    <td><img src="${film.url}" class="img-fluid img-thumbnail"></td>
+    <td>${film.title}</td>
+    <td>${film.producer}</td>
     <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
   </tr>`;
   })
-
 }
 
 UI.prototype.deleteFilmFromUI = function(element) {
